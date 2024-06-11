@@ -21,7 +21,7 @@
 				<!-- Header -->
 					<header id="header">
 						<span class="logo" ><img height="300" src="images/cinema.png" alt="" /></span>
-						<h1>Python project</h1>
+						<h1>Explorando el desempeño de películas: un análisis visual</h1>
 						<p>Projecto de Python</p>
 					</header>
 				<!-- Main -->
@@ -31,36 +31,38 @@
 								<!-- Introducción -->	
 								<h2><b>Introducción</b></h2>
 								<p>Base de datos: <a href="https://www.kaggle.com/datasets/danielgrijalvas/movies/data" target="_blank" style="color: rgb(101, 161, 211)">Kaggle Movie Industry</a></p>
-								<p style=text-align:justify> 
-								los ingresos en taquilla y las calificaciones de los usuarios. 
-								En este proyecto, exploramos cómo se relacionan estas variables para entender mejor qué factores pueden influir en el éxito de una película. 
-								Utilizaremos Python para crear visualizaciones que faciliten la interpretación de estos datos, 
-								aprovechando la capacidad de las gráficas para proporcionar una comprensión más intuitiva y 
-								detallada de las correlaciones en la industria cinematográfica.</p>
+								<p style=text-align:justify>Aunque ir al cine puede no ser tan común como antes, el cine sigue siendo el 
+								principal generador de ingresos en la industria cinematográfica. 
+								Sin embargo, si bien las ganancias son un aspecto crucial del rendimiento de una película, no son el único factor determinante. 
+								La forma en que una película es valorada por el público también desempeña un papel fundamental en su éxito.
+								<br>En este proyecto, nos sumergimos en el análisis de cómo estas variables están relacionadas  para comprender mejor qué factores 
+								pueden influir en el rendimiento de una película. Utilizando Python, crearemos visualizaciones que nos ayudarán a 
+								interpretar estos datos, aprovechando la capacidad de las gráficas y diagramas para ofrecer una comprensión más intuitiva y 
+								detallada de las correlaciones de diferentes variables en la industria cinematográfica.</p>
 								<!-- Valores -->
 								<!-- Linea 1 -->
 								<h2><b>Preparación del proyecto.</b></h2>
 								<p style=text-align:justify>Para comenzar el proyecto, primero se importaron las bibliotecas necesarias: 
 									pandas para facilitar el manejo de datos, matplotlib junto con seaborn para graficar estos datos, y numpy, 
 									que es útil para manejar números y realizar operaciones matemáticas.</p>
-								<pre><code>import pandas as pd
-import seaborn as sns
-import matplotlib
-import numpy as np
-import matplotlib.pyplot as plt
-plt.style.use('ggplot')
-from matplotlib.pyplot import figure
+								<pre><code><span style="color: green">import</span> pandas<span style="color: green"> as  </span>pd
+<span style="color: green">import</span> seaborn<span style="color: green"> as  </span>sns
+<span style="color: green">import</span> matplotlib
+<span style="color: green">import</span> numpy<span style="color: green"> as  </span>np
+<span style="color: green">import</span> matplotlib.pyplot<span style="color: green"> as  </span>plt
+plt.style.use(<span style="color: #BD4024">"ggplot"</span>)
+<span style="color: green">from</span> matplotlib.pyplot <span style="color: green">import</span> figure
 </code></pre>
 								<p style=text-align:justify>A continuación, se configuraron los parámetros de tamaño general que se utilizaron para los gráficos, 
 								asegurando una visualización coherente y clara de los datos.</p>
-								<pre><code>%matplotlib inline
-matplotlib.rcParams['figure.figsize'] = (12, 6)</code></pre>
+								<pre><code>%<span style="color: green">matplotlib</span> inline
+matplotlib.rcParams[<span style="color: #BD4024">"figure.figsize"</span>] = (<span style="color: green">12</span>, <span style="color: green">6</span>)</code></pre>
 								<p style=text-align:justify>Posteriormente, se cargó el archivo de datos .csv que se va a explorar.</p>
-								<pre><code>df = pd.read_csv(path\movies.csv")</code></pre>
+								<pre><code>df = pd.read_csv(<span style="color: #BD4024">"..\movies.csv"</span>)</code></pre>
 								<!-- Linea 2 -->
 								<p style=text-align:justify>Finalmente, se utilizó el método df.head para mostrar algunas filas del 
 								DataFrame y observar las columnas y el tipo de datos que se utilizaran en el proyecto.</p>
-								<pre><code>df.head(5)</code></pre>
+								<pre><code>df.head(<span style="color: green">5</span>)</code></pre>
 								<div class="table-wrapper">
 									<table class="dataframe">
 										<thead>
@@ -227,25 +229,25 @@ dtype: float64</code></pre>
 df.drop_duplicates()</code></pre>
 								<p style=text-align:justify>Las columnas "votes", "budget", "gross" y "runtime" tenían un .0 al final de sus valores. 
 								Por preferencia personal, se convirtieron estos valores a int64.</p>
-								<pre><code>for i in range(len(df.columns)):
-	if i in (6,11,12,14):   
-		df[df.columns[i]] = df[df.columns[i]].astype("int64")</code></pre>
+								<pre><code><span style="color: green">for </span>i in range(len(df.columns)):
+	<span style="color: green">if </span>i in (<span style="color: green">6</span>,<span style="color: green">11</span>,<span style="color: green">12</span>,<span style="color: green">14</span>):   
+		df[df.columns[i]] = df[df.columns[i]].astype(<span style="color: #BD4024">"int64"</span>)</code></pre>
 								<p style=text-align:justify>Finalmente, se organizaron los datos de mayor a menor "gross", manteniendo 
 								el DataFrame ordenado para facilitar la visualización posterior.</p>
-								<pre><code>df = df.sort_values(by=["gross"], inplace=False, ascending=False)</code></pre>
+								<pre><code>df = df.sort_values(by=[<span style="color: #BD4024">"gross"</span>], inplace=<span style="color: green">False</span>, ascending=<span style="color: green">False</span>)</code></pre>
 								<h2><b>Una imagen vale más que mil palabras.</b></h2>
 								<h4><b>1. Tendencia de los ingresos brutos en la industria cinematográfica</b></h4>
 								<!-- Tendencia -->
 								<p style=text-align:justify>Primero, se graficó el promedio de ingresos brutos de las 
 								películas por año para observar cómo habían progresado a lo largo del tiempo.</p>
-								<pre><code>sns.lineplot(x='year', y='gross', data=df, 
-	estimator='average', color="firebrick", 
-	marker="o", markersize=4, markerfacecolor="black", 
-	errorbar=None)
+								<pre><code>sns.lineplot(x=<span style="color: #BD4024">"year"</span>, y=<span style="color: #BD4024">"gross"</span>, data=df, 
+	estimator=<span style="color: #BD4024">"average"</span>, color=<span style="color: #BD4024">"firebrick"</span>, 
+	marker=<span style="color: #BD4024">"o"</span>, markersize=<span style="color: green">4</span>, markerfacecolor=<span style="color: #BD4024">"o"</span>, 
+	errorbar=<span style="color: green">None</span>)
 
-plt.title('Promedio de ingresos a lo Largo de los Años')
-plt.xlabel('Año')
-plt.ylabel('Ingresos promedio')
+plt.title(<span style="color: #BD4024">"Promedio de ingresos a lo Largo de los Años"</span>)
+plt.xlabel(<span style="color: #BD4024">"Año"</span>)
+plt.ylabel(<span style="color: #BD4024">"Ingresos promedio"</span>)
 plt.show()</code></pre>
 								<!-- Grafico tendencia -->
 								<div class="col-12"><span class="image fit"><img src="images/lineplot.png" alt="" /></span></div>
@@ -254,16 +256,16 @@ plt.show()</code></pre>
 								lo largo de los años, desde 1980 hasta 2020. En estos 40 años, los ingresos mostraron un incremento general, 
 								con algunas excepciones de pequeños descensos en ciertos años. 
 								En general, se pudo concluir que la industria del cine sigue en crecimiento.</p>	
-								<h4><b>2. Genero</b></h4>
+								<h4><b>2. Género cinematográfico, presupuesto y ingresos Brutos</b></h4>
 								<p style=text-align:justify>Se graficó un diagrama de cajas para analizar cómo se relacionaba el género con el presupuesto destinado a la 
 								producción de una película.</p>			 
-								<pre><code>sns.boxplot(x='genre', y='budget', data=df, 
-	color="orange", fliersize=2)
+								<pre><code>sns.boxplot(x=<span style="color: #BD4024">"genre"</span>, y=<span style="color: #BD4024">"budget"</span>, data=df, 
+	color=<span style="color: #BD4024">"orange"</span>, fliersize=<span style="color: green">2</span>)
 
-plt.title('Distribución de Presupuestos por Género')
-plt.xlabel('Género')
-plt.ylabel('Presupuesto')
-plt.xticks(rotation=45)
+plt.title(<span style="color: #BD4024">"Distribución de Presupuestos por Género"</span>)
+plt.xlabel(<span style="color: #BD4024">"Género"</span>)
+plt.ylabel(<span style="color: #BD4024">"Presupuesto"</span>)
+plt.xticks(rotation=<span style="color: green">45</span>)
 plt.show()</code></pre>
 								<!-- Box 1 plot -->
 								<div class="col-12"><span class="image fit"><img src="images/boxplot1.png" alt="" /></span></div>
@@ -280,34 +282,36 @@ plt.show()</code></pre>
 								probablemente debido a que pocas películas se clasifican como western y las que lo fueron eran de bajo presupuesto.</p>		
 								</p style=text-align:justify>Posteriormente, se graficó un diagrama de cajas para ver cómo se relacionaban el género 
 								con los ingresos de una película.</p>
-								<pre><code>sns.boxplot(x='genre', y='gross', data=df, 
-	color="brown", fliersize=2)
+								<pre><code>sns.boxplot(x=<span style="color: #BD4024">"genre"</span>, y=<span style="color: #BD4024">"gross"</span>, data=df, 
+	color=<span style="color: #BD4024">"brown"</span>, fliersize=<span style="color: green">2</span>)
 
-plt.title('Recaudación Bruta (Gross) por Género')
-plt.xlabel('Género')
-plt.ylabel('Recaudación Bruta')
-plt.xticks(rotation=45)
+plt.title(<span style="color: #BD4024">"Recaudación Bruta (Gross) por Género"</span>)
+plt.xlabel(<span style="color: #BD4024">"Género"</span>)
+plt.ylabel(<span style="color: #BD4024">"Recaudación Bruta"</span>)
+plt.xticks(rotation=<span style="color: green">45</span>)
 plt.show()</code></pre>
 								<!-- Blox 2 plot -->
 								<div class="col-12"><span class="image fit"><img src="images/boxplot2.png" alt="" /></span></div>
 								<!-- Distribucion -->
-								<p style=text-align:justify>Al observar este gráfico, se notó que los valores del eje Y estaban en 1e9 frente a 1e8 del gráfico anterior, 
-								lo que sugiere que en general las películas de todos los géneros generan ganancias.</p>
+								<p style=text-align:justify>Al observar este gráfico, notaron que los valores del eje Y estaban en 1e9 frente a 1e8 del gráfico anterior, 
+								lo que sugirió que, en general, las películas generaban ganancias o, lo que es más probable, 
+								los valores atípicos en ingresos, es decir, las películas que generaron muchos ingresos, sesgaban la gráfica. 
+								Por lo tanto, en una exploración más a fondo, sería recomendable excluir los valores atípicos.</p>
 								<p style=text-align:justify>Las películas familiares eran las que más recaudaban en promedio y en mediana. 
 									Aunque las películas de animación tenían los presupuestos más altos, las películas familiares tendían a generar mayores ingresos. 
 									Las películas familiares no presentaban valores atípicos, lo que las hacía una apuesta más segura para generar ganancias netas. 
 									Por otro lado, las películas de acción presentaban valores atípicos tanto en el presupuesto como en los ingresos, 
 									con algunos valores casi diez veces el presupuesto, indicando que aunque más arriesgadas, podrían generar altos ingresos.</p>
-								<h4><b>3. Puntuaciónes de películas segun IMDb</b></h4>
+								<h4><b>3. Calificacion de películas segun IMDb</b></h4>
 								<p style=text-align:justify>Se analizó otro factor del desempeño de una película: la puntuación dada en IMDb. 
 								Para ello, se utilizó un histograma para visualizar cómo se distribuían las puntuaciones.</p>
-								<pre><code>hist = sns.histplot(df['score'], kde=True, 
-	color='darkgoldenrod', stat="count")
+								<pre><code>hist = sns.histplot(df[<span style="color: #BD4024">"score"</span>], kde=<span style="color: green">True</span>, 
+	color=<span style="color: #BD4024">"darkgoldenrod"</span>, stat=<span style="color: #BD4024">"count"</span>)
 
-hist.lines[0].set_color('red')
-plt.title('Distribución de Calificaciones (Ratings)')
-plt.xlabel('Calificación')
-plt.ylabel('Frecuencia')
+hist.lines[<span style="color: green">0</span>].set_color(<span style="color: #BD4024">"red"</span>)
+plt.title(<span style="color: #BD4024">"Distribución de Calificaciones (Ratings)"</span>)
+plt.xlabel(<span style="color: #BD4024">"Calificación"</span>)
+plt.ylabel(<span style="color: #BD4024">"Frecuencia"</span>)
 plt.show()</code></pre>
 								<!-- Distribucion plot -->
 								<div class="col-12"><span class="image fit"><img src="images/histplot.png" alt="" /></span></div>
@@ -323,9 +327,13 @@ plt.show()</code></pre>
 								Además, como la calificación en IMDb es un promedio de calificaciones, con solo otra persona votando un valor 
 								diferente, estos extremos se vuelven prácticamente imposibles de alcanzar.</p>
 								<!-- Correlations -->
-								<h4><b>4. Correlations</b></h4>
-								<p style=text-align:justify>Buscamos correlaciones entre los valores numericos</p>
-								<pre><code>corr_matrix = df.corr(numeric_only=True)
+								<h4><b>4. Búsqueda de correlaciones</b></h4>
+								<p style=text-align:justify>No toda relación es aparente, por lo que hay que buscar correlaciones, 
+								con 1 indicando una correlación perfecta, normalmente sugiriendo que los valores son redundantes, 
+								0 mostrando que los valores no se correlacionaban en absoluto y son completamente independientes entre sí, y -1 indicando una correlación 
+								negativa perfecta. Para ello, se utilizó la función de correlaciones de pandas para generar una matriz que mostrara qué 
+								tan correlacionados estaban los valores numéricos entre sí.</p>
+								<pre><code>corr_matrix = df.corr(numeric_only=<span style="color: green">True</span>)
 corr_matrix</code></pre>
 								<div>
 									<table class="dataframe">
@@ -398,20 +406,24 @@ corr_matrix</code></pre>
 									</tbody>
 									</table>
 								</div>
-								<p style=text-align:justify>Para visualizar mejor que valores tienen una alta correlacion se uso un mapa de calor 
-								Configuracion de mapa de calor, colores y solo una diagonal</p>
+								<p style=text-align:justify>Dado que se ha venido utilizando gráficos, no dejamos de lado este recurso y visualizamos esta 
+								matriz en un gráfico de calor, donde el color más oscuro indicaba una mayor correlación entre los valores. </p>
 								<pre><code>mask = np.triu(np.ones_like(corr_matrix, dtype=bool))
-cmap = sns.diverging_palette(240, 10, as_cmap=True)
-sns.heatmap(corr_matrix, annot=True, cmap=cmap, 
-	mask=mask, vmax=1, center=0, square=True, linewidths=.5)
+cmap = sns.diverging_palette(<span style="color: green">240</span>, <span style="color: green">10</span>, as_cmap=<span style="color: green">True</span>)
+sns.heatmap(corr_matrix, annot=<span style="color: green">True</span>, cmap=cmap, 
+	mask=mask, vmax=<span style="color: green">1</span>, center=<span style="color: green">0</span>, square=<span style="color: green">True</span>, linewidths=<span style="color: green">.5</span>)
 
-plt.title("Matriz de correlación valores numéricos")</code></pre>
+plt.title(<span style="color: #BD4024">"Matriz de correlación valores numéricos"</span>)</code></pre>
 								<!-- Correlations plot -->
 								<div class="col-12"><span class="image fit"><img src="images/heatmap.png" alt="" /></span></div>
-								<p style=text-align:justify>Columnas que se correlacionan filtradas > 0.5 y  1 (evitar redundancias)</p>
+								<p style=text-align:justify>En este caso particular, aunque no 
+									tenían muchos valores numéricos, fue fácil identificar qué columnas estaban correlacionadas. Sin embargo, con muchas columnas, 
+									sería difícil de visualizar, por lo que también se filtró la matriz de correlación para mostrar solo los valores mayores que 0.5, 
+									indicando una correlación ligera, y menores que 1, indicando valores redundantes. Aunque excluir los valores iguales a 1 no siempre es una 
+									buena idea, ya que se podrían tener valores redundantes que pasaran desapercibidos, en este caso no ocurrió. </p>
 								<pre><code>corr_pairs = corr_matrix.unstack()
 sorted_pairs = corr_pairs.sort_values()
-high_corr = sorted_pairs[(sorted_pairs > 0.5) & (sorted_pairs < 1)]
+high_corr = sorted_pairs[(sorted_pairs > <span style="color: green">0.5</span>) & (sorted_pairs < <span style="color: green">1</span>)]
 high_corr</code></pre>
 								<pre><code>gross   votes     0.614751
 votes   gross     0.614751
@@ -419,34 +431,46 @@ budget  gross     0.740247
 gross   budget    0.740247
 dtype: float64</code></pre>
 								<!-- Scatter -->
-								<p style=text-align:justify>El presupuesto tiene una correlacion con las ganancias
-								Grafico de dispersion budget vs gross
-								Con ayuda de seaborn trazamos una línea de regresión</p>
-								<pre><code>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 6))
+								<p style=text-align:justify>Se observó una alta correlación entre presupuesto e ingresos y una ligera correlación entre ganancias y calificaciones.
+									Para aclarar más estos hallazgos, se realizaron diagramas de dispersión con regresión lineal.
+								</p>
+								<pre><code>fig, (ax1, ax2) = plt.subplots(<span style="color: green">1</span>, <span style="color: green">2</span>, figsize=(<span style="color: green">13</span>, <span style="color: green">6</span>))
 
-sns.regplot(x="budget", y="gross", data=df, 
-	line_kws={"color": "blue"}, 
-	scatter_kws={"color": "firebrick"}, ax=ax1)
+sns.regplot(x=<span style="color: #BD4024">"budget"</span>, y=<span style="color: #BD4024">"gross"</span>, data=df, 
+	line_kws={<span style="color: #BD4024">"color"</span>: <span style="color: #BD4024">"blue"</span>}, 
+	scatter_kws={<span style="color: #BD4024">"color"</span>: <span style="color: #BD4024">"firebrick"</span>}, ax=ax1)
 
-ax1.set_title("Presupuesto vs Ingresos brutos")
-ax1.set_xlabel("Presupuesto")
-ax1.set_ylabel("Ingresos")
+ax1.set_title(<span style="color: #BD4024">"Presupuesto vs Ingresos brutos"</span>)
+ax1.set_xlabel(<span style="color: #BD4024">"Presupuesto"</span>)
+ax1.set_ylabel(<span style="color: #BD4024">"Ingresos"</span>)
 
-sns.regplot(x="votes", y="gross", data=df, 
-	line_kws={"color": "firebrick"}, 
-	scatter_kws={"color": "blue"}, ax=ax2)
+sns.regplot(x=<span style="color: #BD4024">"votes"</span>, y=<span style="color: #BD4024">"gross"</span>, data=df, 
+	line_kws={<span style="color: #BD4024">"color"</span>: <span style="color: #BD4024">"firebrick"</span>}, 
+	scatter_kws={<span style="color: #BD4024">"color"</span>: <span style="color: #BD4024">"blue"</span>}, ax=ax2)
 
-ax2.set_title("# Votos IMDb vs Ingresos brutos")
-ax2.set_xlabel("# Votos")
-ax2.set_ylabel("Ingresos")
+ax2.set_title(<span style="color: #BD4024">"# Votos IMDb vs Ingresos brutos"</span>)
+ax2.set_xlabel(<span style="color: #BD4024">"# Votos"</span>)
+ax2.set_ylabel(<span style="color: #BD4024">"Ingresos"</span>)
 
 plt.show()</code></pre>
 								<!-- Scatter plot-->
-								<p style=text-align:justify>Crear dos subplots, uno al lado del otro Gráfico 1: Presupuesto vs Ingresos brutos 
-								Gráfico 2: # Votos IMDb vs Ingresos brutos
-								</p>
 								<div class="col-12"><span class="image fit"><img src="images/scatter.png" alt="" /></span></div>
-								<p style=text-align:justify> concluciones</p>
+								<p style=text-align:justify>Se llegaron a las siguientes conclusiones:
+								<u1>
+									<li style=text-align:justify>Se evidencia una clara correlación entre el presupuesto de una película y sus ingresos brutos. A medida que el presupuesto aumenta, 
+									los ingresos brutos tienden a incrementarse también. No obstante, se aprecia una notable dispersión en los datos, lo que indica que no todas 
+									las películas con altos presupuestos generan ingresos proporcionales.<br>Se identifican valores atípicos con ingresos excepcionalmente altos, 
+									sugiriendo que algunas películas alcanzan un éxito destacado en taquilla sin necesariamente tener presupuestos elevados.</li>
+									<li style=text-align:justify>Se observa una correlación entre el número de votos de los usuarios en IMDb y los ingresos brutos de una película. 
+									Aquellas películas con más votos tienden a generar mayores ingresos. Sin embargo, al igual que en el gráfico anterior, se observa una significativa dispersión, 
+									indicando que el número de votos no es el único factor determinante de los ingresos brutos.<br>Se identifican varios valores atípicos con ingresos muy altos, 
+									sugiriendo que algunas películas logran obtener altos ingresos sin necesariamente tener la mayor cantidad de votos.</li>
+									<li style=text-align:justify>Ambos gráficos revelan una correlación positiva entre el presupuesto y los ingresos brutos, 
+									así como entre el número de votos y los ingresos brutos. No obstante, la amplia dispersión en los datos sugiere que otros 
+									factores también influyen significativamente en el éxito financiero de una película. 
+									Además, los valores atípicos indican que hay películas que superan notablemente las expectativas en términos de ingresos, 
+									independientemente de su presupuesto o cantidad de votos.</li>
+								</ul></p>
 								<p><a href="https://github.com/alejandro1403/dquest/blob/master/projects/movies/MovieProject.ipynb" target="_blank" style="color: rgb(101, 161, 211)">Ver Python Notebook en GitHub</a></p>
 								<!-- Final -->
 							<div class="flex-container"> 
