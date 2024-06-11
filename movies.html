@@ -30,12 +30,19 @@
 							<section id="content" class="main">
 								<!-- Introducción -->	
 								<h2><b>Introducción</b></h2>
-								<p style=text-align:justify> Proyecto en transcurso</p>
 								<p>Base de datos: <a href="https://www.kaggle.com/datasets/danielgrijalvas/movies/data" target="_blank" style="color: rgb(101, 161, 211)">Kaggle Movie Industry</a></p>
+								<p style=text-align:justify> 
+								los ingresos en taquilla y las calificaciones de los usuarios. 
+								En este proyecto, exploramos cómo se relacionan estas variables para entender mejor qué factores pueden influir en el éxito de una película. 
+								Utilizaremos Python para crear visualizaciones que faciliten la interpretación de estos datos, 
+								aprovechando la capacidad de las gráficas para proporcionar una comprensión más intuitiva y 
+								detallada de las correlaciones en la industria cinematográfica.</p>
 								<!-- Valores -->
 								<!-- Linea 1 -->
-								<h4><b>1. import.</b></h4>
-								<p style=text-align:justify>Import de herramientas que usaremos</p>
+								<h2><b>Preparación del proyecto.</b></h2>
+								<p style=text-align:justify>Para comenzar el proyecto, primero se importaron las bibliotecas necesarias: 
+									pandas para facilitar el manejo de datos, matplotlib junto con seaborn para graficar estos datos, y numpy, 
+									que es útil para manejar números y realizar operaciones matemáticas.</p>
 								<pre><code>import pandas as pd
 import seaborn as sns
 import matplotlib
@@ -44,13 +51,15 @@ import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 from matplotlib.pyplot import figure
 </code></pre>
-								<p style=text-align:justify>Configuracion inicial para los graficos</p>
+								<p style=text-align:justify>A continuación, se configuraron los parámetros de tamaño general que se utilizaron para los gráficos, 
+								asegurando una visualización coherente y clara de los datos.</p>
 								<pre><code>%matplotlib inline
 matplotlib.rcParams['figure.figsize'] = (12, 6)</code></pre>
-								<p style=text-align:justify>Leer el archivo de datos</p>
+								<p style=text-align:justify>Posteriormente, se cargó el archivo de datos .csv que se va a explorar.</p>
 								<pre><code>df = pd.read_csv(path\movies.csv")</code></pre>
 								<!-- Linea 2 -->
-								<p style=text-align:justify>Primeras 5 filas de la tabla</p>
+								<p style=text-align:justify>Finalmente, se utilizó el método df.head para mostrar algunas filas del 
+								DataFrame y observar las columnas y el tipo de datos que se utilizaran en el proyecto.</p>
 								<pre><code>df.head(5)</code></pre>
 								<div class="table-wrapper">
 									<table class="dataframe">
@@ -169,8 +178,9 @@ matplotlib.rcParams['figure.figsize'] = (12, 6)</code></pre>
 										</table>
 								</div>
 								<!-- Linea 3 -->
-								<br><h4><b>2. procesamiento.</b></h4>
-								<p style=text-align:justify>Identificamos con que tipo de datos vamos a trabajar</p>
+								<br><h2><b>Procesamiento de datos.</b></h2>
+								<p style=text-align:justify>Para tener una comprensión clara de los tipos de datos que se iban a utilizar, 
+								se verificaron los datatypes exactos de cada columna.</p>
 								<pre><code>df.dtypes</code></pre>
 								<pre><code>name         object
 rating       object
@@ -189,7 +199,9 @@ company      object
 runtime     float64
 dtype: object</code></pre>
 								<!-- Linea 4 -->
-								<p style=text-align:justify>Revisar si hay valores nulos</p>
+								<p style=text-align:justify>Se observó que datos como "votes" (cantidad de votos que la película tiene en IMDb), 
+								que solo pueden ser enteros (una persona vota o no vota), aparecían como float64. 
+								También se revisaron las columnas en busca de valores nulos.</p>
 								<pre><code>df.isnull().mean()</code></pre>
 								<pre><code>name        0.000000
 rating      0.010042
@@ -208,18 +220,24 @@ company     0.002217
 runtime     0.000522
 dtype: float64</code></pre>
 								<!-- Linea 5 -->
-								<p style=text-align:justify>Eliminar filas con valores nulos y Eliminar duplicados si los hay</p>
+								<p style=text-align:justify>Se encontró que "budget" era la columna con más valores nulos, seguida por "gross". 
+									Dado que estas variables eran cruciales para el objetivo de exploración de este proyecto, 
+									se decidió eliminar las filas con valores nulos y, de paso, los duplicados.</p>
 								<pre><code>df = df.dropna()
 df.drop_duplicates()</code></pre>
-								<p style=text-align:justify>Cambiar tipo de datos para votes, budget, gross y runtime de float a int quitar .0 </p>
+								<p style=text-align:justify>Las columnas "votes", "budget", "gross" y "runtime" tenían un .0 al final de sus valores. 
+								Por preferencia personal, se convirtieron estos valores a int64.</p>
 								<pre><code>for i in range(len(df.columns)):
 	if i in (6,11,12,14):   
 		df[df.columns[i]] = df[df.columns[i]].astype("int64")</code></pre>
-								<p style=text-align:justify>Ordenar por gross de mayor a menor</p>
+								<p style=text-align:justify>Finalmente, se organizaron los datos de mayor a menor "gross", manteniendo 
+								el DataFrame ordenado para facilitar la visualización posterior.</p>
 								<pre><code>df = df.sort_values(by=["gross"], inplace=False, ascending=False)</code></pre>
-								<h4><b>3. emepecemos.</b></h4>
+								<h2><b>Una imagen vale más que mil palabras.</b></h2>
+								<h4><b>1. Tendencia de los ingresos brutos en la industria cinematográfica</b></h4>
 								<!-- Tendencia -->
-								<p style=text-align:justify>Tendencia de ingresos brutos (gross) a lo largo de los años</p>
+								<p style=text-align:justify>Primero, se graficó el promedio de ingresos brutos de las 
+								películas por año para observar cómo habían progresado a lo largo del tiempo.</p>
 								<pre><code>sns.lineplot(x='year', y='gross', data=df, 
 	estimator='average', color="firebrick", 
 	marker="o", markersize=4, markerfacecolor="black", 
@@ -232,7 +250,13 @@ plt.show()</code></pre>
 								<!-- Grafico tendencia -->
 								<div class="col-12"><span class="image fit"><img src="images/lineplot.png" alt="" /></span></div>
 								<!-- Box 1 -->				
-								<p style=text-align:justify>Distribución de presupuestos (budget) por género (genre)</p>				 
+								<p style=text-align:justify>Se observó que los ingresos promedio de las películas habían aumentado de manera constante a 
+								lo largo de los años, desde 1980 hasta 2020. En estos 40 años, los ingresos mostraron un incremento general, 
+								con algunas excepciones de pequeños descensos en ciertos años. 
+								En general, se pudo concluir que la industria del cine sigue en crecimiento.</p>	
+								<h4><b>2. Genero</b></h4>
+								<p style=text-align:justify>Se graficó un diagrama de cajas para analizar cómo se relacionaba el género con el presupuesto destinado a la 
+								producción de una película.</p>			 
 								<pre><code>sns.boxplot(x='genre', y='budget', data=df, 
 	color="orange", fliersize=2)
 
@@ -244,7 +268,18 @@ plt.show()</code></pre>
 								<!-- Box 1 plot -->
 								<div class="col-12"><span class="image fit"><img src="images/boxplot1.png" alt="" /></span></div>
 								<!-- Box 2 -->			
-								<p style=text-align:justify>Recaudación bruta (gross) por género (genre)</p>					 
+								<p style=text-align:justify>Se observó que las películas animadas suelen ser más caras de producir, 
+								con una mediana centrada por encima de todos los géneros. 
+								El 50º percentil de las películas animadas estaba entre 50 y 100 millones de presupuesto. Además, 
+								el bigote superior del diagrama de cajas era más largo, lo que indicaba una mayor variación hacia 
+								presupuestos más altos, con pocos valores atípicos.
+								<br>En los géneros de acción, drama, aventura y comedia, se identificó una gran cantidad de valores atípicos, 
+								especialmente en el género de acción, donde estos valores estaban muy por encima del presupuesto medio. 
+								Esto sugiere que las películas más caras suelen ser del género de acción, seguidas por las de aventura. 
+								Las películas western mostraron poca variación y tendieron a gravitar hacia la cota inferior del presupuesto, 
+								probablemente debido a que pocas películas se clasifican como western y las que lo fueron eran de bajo presupuesto.</p>		
+								</p style=text-align:justify>Posteriormente, se graficó un diagrama de cajas para ver cómo se relacionaban el género 
+								con los ingresos de una película.</p>
 								<pre><code>sns.boxplot(x='genre', y='gross', data=df, 
 	color="brown", fliersize=2)
 
@@ -256,7 +291,16 @@ plt.show()</code></pre>
 								<!-- Blox 2 plot -->
 								<div class="col-12"><span class="image fit"><img src="images/boxplot2.png" alt="" /></span></div>
 								<!-- Distribucion -->
-								<p style=text-align:justify>Distribución de calificaciones (ratings)</p>
+								<p style=text-align:justify>Al observar este gráfico, se notó que los valores del eje Y estaban en 1e9 frente a 1e8 del gráfico anterior, 
+								lo que sugiere que en general las películas de todos los géneros generan ganancias.</p>
+								<p style=text-align:justify>Las películas familiares eran las que más recaudaban en promedio y en mediana. 
+									Aunque las películas de animación tenían los presupuestos más altos, las películas familiares tendían a generar mayores ingresos. 
+									Las películas familiares no presentaban valores atípicos, lo que las hacía una apuesta más segura para generar ganancias netas. 
+									Por otro lado, las películas de acción presentaban valores atípicos tanto en el presupuesto como en los ingresos, 
+									con algunos valores casi diez veces el presupuesto, indicando que aunque más arriesgadas, podrían generar altos ingresos.</p>
+								<h4><b>3. Puntuaciónes de películas segun IMDb</b></h4>
+								<p style=text-align:justify>Se analizó otro factor del desempeño de una película: la puntuación dada en IMDb. 
+								Para ello, se utilizó un histograma para visualizar cómo se distribuían las puntuaciones.</p>
 								<pre><code>hist = sns.histplot(df['score'], kde=True, 
 	color='darkgoldenrod', stat="count")
 
@@ -267,7 +311,19 @@ plt.ylabel('Frecuencia')
 plt.show()</code></pre>
 								<!-- Distribucion plot -->
 								<div class="col-12"><span class="image fit"><img src="images/histplot.png" alt="" /></span></div>
+								<p style=text-align:justify>En el histograma, se observó que la mayoría de las películas tenían una calificación entre 6 y 7. 
+								En una escala de 1 a 10, se esperaría que los valores gravitaran alrededor de 5, 
+								con pocos valores cerca de 1 y 10, indicando que la mayoría de peliculas son mediocres y muy pocas son excelentes o definitivamente malas.
+								Sin embargo, no fue el caso aquí. Esto ocurre en muchas estadísticas de calificación; 
+								generalmente, las personas no dan calificaciones muy negativas, calificando lo mediocre entre 6 y 7. 
+								Esto ha llevado a que una película con una calificación de 6.5, que debería interpretarse como ligeramente por encima de la media (5), 
+								sea vista como mediocre.
+								<br>También se observó que no había ninguna calificación de 10 ni de 1, lo cual 
+								puede atribuirse a la dificultad de considerar algo completamente perfecto (10) o absolutamente malo (1). 
+								Además, como la calificación en IMDb es un promedio de calificaciones, con solo otra persona votando un valor 
+								diferente, estos extremos se vuelven prácticamente imposibles de alcanzar.</p>
 								<!-- Correlations -->
+								<h4><b>4. Correlations</b></h4>
 								<p style=text-align:justify>Buscamos correlaciones entre los valores numericos</p>
 								<pre><code>corr_matrix = df.corr(numeric_only=True)
 corr_matrix</code></pre>
