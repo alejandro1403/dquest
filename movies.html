@@ -1,0 +1,443 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title >Movies</title>
+		<link rel="icon" href="images/logo1.png" type="image/x-icon" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<span class="logo" ><img height="300" src="images/cinema.png" alt="" /></span>
+						<h1>Python project</h1>
+						<p>Projecto de Python</p>
+					</header>
+				<!-- Main -->
+					<div id="main">
+						<!-- Content -->
+							<section id="content" class="main">
+								<!-- Introducción -->	
+								<h2><b>Introducción</b></h2>
+								<p style=text-align:justify> Proyecto en transcurso</p>
+								<p>Base de datos: <a href="https://www.kaggle.com/datasets/danielgrijalvas/movies/data" target="_blank" style="color: rgb(101, 161, 211)">Kaggle Movie Industry</a></p>
+								<!-- Valores -->
+								<!-- Linea 1 -->
+								<h4><b>1. import.</b></h4>
+								<p style=text-align:justify>Import de herramientas que usaremos</p>
+								<pre><code>import pandas as pd
+import seaborn as sns
+import matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+plt.style.use('ggplot')
+from matplotlib.pyplot import figure
+</code></pre>
+								<p style=text-align:justify>Configuracion inicial para los graficos</p>
+								<pre><code>%matplotlib inline
+matplotlib.rcParams['figure.figsize'] = (12, 6)</code></pre>
+								<p style=text-align:justify>Leer el archivo de datos</p>
+								<pre><code>df = pd.read_csv(path\movies.csv")</code></pre>
+								<!-- Linea 2 -->
+								<p style=text-align:justify>Primeras 5 filas de la tabla</p>
+								<pre><code>df.head(5)</code></pre>
+								<div class="table-wrapper">
+									<table class="dataframe">
+										<thead>
+										<tr style="text-align: right;">
+										<th></th>
+										<th>name</th>
+										<th>rating</th>
+										<th>genre</th>
+										<th>year</th>
+										<th>released</th>
+										<th>score</th>
+										<th>votes</th>
+										<th>director</th>
+										<th>writer</th>
+										<th>star</th>
+										<th>country</th>
+										<th>budget</th>
+										<th>gross</th>
+										<th>company</th>
+										<th>runtime</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr>
+										<th>0</th>
+										<td>The Shining</td>
+										<td>R</td>
+										<td>Drama</td>
+										<td>1980</td>
+										<td>June 13, 1980 (United States)</td>
+										<td>8.4</td>
+										<td>927000.0</td>
+										<td>Stanley Kubrick</td>
+										<td>Stephen King</td>
+										<td>Jack Nicholson</td>
+										<td>United Kingdom</td>
+										<td>19000000.0</td>
+										<td>46998772.0</td>
+										<td>Warner Bros.</td>
+										<td>146.0</td>
+										</tr>
+										<tr>
+										<th>1</th>
+										<td>The Blue Lagoon</td>
+										<td>R</td>
+										<td>Adventure</td>
+										<td>1980</td>
+										<td>July 2, 1980 (United States)</td>
+										<td>5.8</td>
+										<td>65000.0</td>
+										<td>Randal Kleiser</td>
+										<td>Henry De Vere Stacpoole</td>
+										<td>Brooke Shields</td>
+										<td>United States</td>
+										<td>4500000.0</td>
+										<td>58853106.0</td>
+										<td>Columbia Pictures</td>
+										<td>104.0</td>
+										</tr>
+										<tr>
+										<th>2</th>
+										<td>Star Wars: Episode V - The Empire Strikes Back</td>
+										<td>PG</td>
+										<td>Action</td>
+										<td>1980</td>
+										<td>June 20, 1980 (United States)</td>
+										<td>8.7</td>
+										<td>1200000.0</td>
+										<td>Irvin Kershner</td>
+										<td>Leigh Brackett</td>
+										<td>Mark Hamill</td>
+										<td>United States</td>
+										<td>18000000.0</td>
+										<td>538375067.0</td>
+										<td>Lucasfilm</td>
+										<td>124.0</td>
+										</tr>
+										<tr>
+										<th>3</th>
+										<td>Airplane!</td>
+										<td>PG</td>
+										<td>Comedy</td>
+										<td>1980</td>
+										<td>July 2, 1980 (United States)</td>
+										<td>7.7</td>
+										<td>221000.0</td>
+										<td>Jim Abrahams</td>
+										<td>Jim Abrahams</td>
+										<td>Robert Hays</td>
+										<td>United States</td>
+										<td>3500000.0</td>
+										<td>83453539.0</td>
+										<td>Paramount Pictures</td>
+										<td>88.0</td>
+										</tr>
+										<tr>
+										<th>4</th>
+										<td>Caddyshack</td>
+										<td>R</td>
+										<td>Comedy</td>
+										<td>1980</td>
+										<td>July 25, 1980 (United States)</td>
+										<td>7.3</td>
+										<td>108000.0</td>
+										<td>Harold Ramis</td>
+										<td>Brian Doyle-Murray</td>
+										<td>Chevy Chase</td>
+										<td>United States</td>
+										<td>6000000.0</td>
+										<td>39846344.0</td>
+										<td>Orion Pictures</td>
+										<td>98.0</td>
+										</tr>
+										</tbody>
+										</table>
+								</div>
+								<!-- Linea 3 -->
+								<br><h4><b>2. procesamiento.</b></h4>
+								<p style=text-align:justify>Identificamos con que tipo de datos vamos a trabajar</p>
+								<pre><code>df.dtypes</code></pre>
+								<pre><code>name         object
+rating       object
+genre        object
+year          int64
+released     object
+score       float64
+votes       float64
+director     object
+writer       object
+star         object
+country      object
+budget      float64
+gross       float64
+company      object
+runtime     float64
+dtype: object</code></pre>
+								<!-- Linea 4 -->
+								<p style=text-align:justify>Revisar si hay valores nulos</p>
+								<pre><code>df.isnull().mean()</code></pre>
+								<pre><code>name        0.000000
+rating      0.010042
+genre       0.000000
+year        0.000000
+released    0.000261
+score       0.000391
+votes       0.000391
+director    0.000000
+writer      0.000391
+star        0.000130
+country     0.000391
+budget      0.283125
+gross       0.024648
+company     0.002217
+runtime     0.000522
+dtype: float64</code></pre>
+								<!-- Linea 5 -->
+								<p style=text-align:justify>Eliminar filas con valores nulos y Eliminar duplicados si los hay</p>
+								<pre><code>df = df.dropna()
+df.drop_duplicates()</code></pre>
+								<p style=text-align:justify>Cambiar tipo de datos para votes, budget, gross y runtime de float a int quitar .0 </p>
+								<pre><code>for i in range(len(df.columns)):
+	if i in (6,11,12,14):   
+		df[df.columns[i]] = df[df.columns[i]].astype("int64")</code></pre>
+								<p style=text-align:justify>Ordenar por gross de mayor a menor</p>
+								<pre><code>df = df.sort_values(by=["gross"], inplace=False, ascending=False)</code></pre>
+								<h4><b>3. emepecemos.</b></h4>
+								<!-- Tendencia -->
+								<p style=text-align:justify>Tendencia de ingresos brutos (gross) a lo largo de los años</p>
+								<pre><code>sns.lineplot(x='year', y='gross', data=df, 
+	estimator='average', color="firebrick", 
+	marker="o", markersize=4, markerfacecolor="black", 
+	errorbar=None)
+
+plt.title('Promedio de ingresos a lo Largo de los Años')
+plt.xlabel('Año')
+plt.ylabel('Ingresos promedio')
+plt.show()</code></pre>
+								<!-- Grafico tendencia -->
+								<div class="col-12"><span class="image fit"><img src="images/lineplot.png" alt="" /></span></div>
+								<!-- Box 1 -->				
+								<p style=text-align:justify>Distribución de presupuestos (budget) por género (genre)</p>				 
+								<pre><code>sns.boxplot(x='genre', y='budget', data=df, 
+	color="orange", fliersize=2)
+
+plt.title('Distribución de Presupuestos por Género')
+plt.xlabel('Género')
+plt.ylabel('Presupuesto')
+plt.xticks(rotation=45)
+plt.show()</code></pre>
+								<!-- Box 1 plot -->
+								<div class="col-12"><span class="image fit"><img src="images/boxplot1.png" alt="" /></span></div>
+								<!-- Box 2 -->			
+								<p style=text-align:justify>Recaudación bruta (gross) por género (genre)</p>					 
+								<pre><code>sns.boxplot(x='genre', y='gross', data=df, 
+	color="brown", fliersize=2)
+
+plt.title('Recaudación Bruta (Gross) por Género')
+plt.xlabel('Género')
+plt.ylabel('Recaudación Bruta')
+plt.xticks(rotation=45)
+plt.show()</code></pre>
+								<!-- Blox 2 plot -->
+								<div class="col-12"><span class="image fit"><img src="images/boxplot2.png" alt="" /></span></div>
+								<!-- Distribucion -->
+								<p style=text-align:justify>Distribución de calificaciones (ratings)</p>
+								<pre><code>hist = sns.histplot(df['score'], kde=True, 
+	color='darkgoldenrod', stat="count")
+
+hist.lines[0].set_color('red')
+plt.title('Distribución de Calificaciones (Ratings)')
+plt.xlabel('Calificación')
+plt.ylabel('Frecuencia')
+plt.show()</code></pre>
+								<!-- Distribucion plot -->
+								<div class="col-12"><span class="image fit"><img src="images/histplot.png" alt="" /></span></div>
+								<!-- Correlations -->
+								<p style=text-align:justify>Buscamos correlaciones entre los valores numericos</p>
+								<pre><code>corr_matrix = df.corr(numeric_only=True)
+corr_matrix</code></pre>
+								<div>
+									<table class="dataframe">
+									<thead>
+									<tr style="text-align: right;">
+									<th></th>
+									<th>year</th>
+									<th>score</th>
+									<th>votes</th>
+									<th>budget</th>
+									<th>gross</th>
+									<th>runtime</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+									<th>year</th>
+									<td>1.000000</td>
+									<td>0.056386</td>
+									<td>0.206021</td>
+									<td>0.327722</td>
+									<td>0.274321</td>
+									<td>0.075077</td>
+									</tr>
+									<tr>
+									<th>score</th>
+									<td>0.056386</td>
+									<td>1.000000</td>
+									<td>0.474256</td>
+									<td>0.072001</td>
+									<td>0.222556</td>
+									<td>0.414068</td>
+									</tr>
+									<tr>
+									<th>votes</th>
+									<td>0.206021</td>
+									<td>0.474256</td>
+									<td>1.000000</td>
+									<td>0.439675</td>
+									<td>0.614751</td>
+									<td>0.352303</td>
+									</tr>
+									<tr>
+									<th>budget</th>
+									<td>0.327722</td>
+									<td>0.072001</td>
+									<td>0.439675</td>
+									<td>1.000000</td>
+									<td>0.740247</td>
+									<td>0.318695</td>
+									</tr>
+									<tr>
+									<th>gross</th>
+									<td>0.274321</td>
+									<td>0.222556</td>
+									<td>0.614751</td>
+									<td>0.740247</td>
+									<td>1.000000</td>
+									<td>0.275796</td>
+									</tr>
+									<tr>
+									<th>runtime</th>
+									<td>0.075077</td>
+									<td>0.414068</td>
+									<td>0.352303</td>
+									<td>0.318695</td>
+									<td>0.275796</td>
+									<td>1.000000</td>
+									</tr>
+									</tbody>
+									</table>
+								</div>
+								<p style=text-align:justify>Para visualizar mejor que valores tienen una alta correlacion se uso un mapa de calor 
+								Configuracion de mapa de calor, colores y solo una diagonal</p>
+								<pre><code>mask = np.triu(np.ones_like(corr_matrix, dtype=bool))
+cmap = sns.diverging_palette(240, 10, as_cmap=True)
+sns.heatmap(corr_matrix, annot=True, cmap=cmap, 
+	mask=mask, vmax=1, center=0, square=True, linewidths=.5)
+
+plt.title("Matriz de correlación valores numéricos")</code></pre>
+								<!-- Correlations plot -->
+								<div class="col-12"><span class="image fit"><img src="images/heatmap.png" alt="" /></span></div>
+								<p style=text-align:justify>Columnas que se correlacionan filtradas > 0.5 y  1 (evitar redundancias)</p>
+								<pre><code>corr_pairs = corr_matrix.unstack()
+sorted_pairs = corr_pairs.sort_values()
+high_corr = sorted_pairs[(sorted_pairs > 0.5) & (sorted_pairs < 1)]
+high_corr</code></pre>
+								<pre><code>gross   votes     0.614751
+votes   gross     0.614751
+budget  gross     0.740247
+gross   budget    0.740247
+dtype: float64</code></pre>
+								<!-- Scatter -->
+								<p style=text-align:justify>El presupuesto tiene una correlacion con las ganancias
+								Grafico de dispersion budget vs gross
+								Con ayuda de seaborn trazamos una línea de regresión</p>
+								<pre><code>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 6))
+
+sns.regplot(x="budget", y="gross", data=df, 
+	line_kws={"color": "blue"}, 
+	scatter_kws={"color": "firebrick"}, ax=ax1)
+
+ax1.set_title("Presupuesto vs Ingresos brutos")
+ax1.set_xlabel("Presupuesto")
+ax1.set_ylabel("Ingresos")
+
+sns.regplot(x="votes", y="gross", data=df, 
+	line_kws={"color": "firebrick"}, 
+	scatter_kws={"color": "blue"}, ax=ax2)
+
+ax2.set_title("# Votos IMDb vs Ingresos brutos")
+ax2.set_xlabel("# Votos")
+ax2.set_ylabel("Ingresos")
+
+plt.show()</code></pre>
+								<!-- Scatter plot-->
+								<p style=text-align:justify>Crear dos subplots, uno al lado del otro Gráfico 1: Presupuesto vs Ingresos brutos 
+								Gráfico 2: # Votos IMDb vs Ingresos brutos
+								</p>
+								<div class="col-12"><span class="image fit"><img src="images/scatter.png" alt="" /></span></div>
+								<p style=text-align:justify> concluciones</p>
+								<p><a href="https://github.com/alejandro1403/dquest/blob/master/projects/movies/MovieProject.ipynb" target="_blank" style="color: rgb(101, 161, 211)">Ver Python Notebook en GitHub</a></p>
+								<!-- Final -->
+							<div class="flex-container"> 
+								<ul class="actions" style=" display: flex; justify-content: space-between;">
+									<li><a href="index.html" class="button primary">Atras</a></li>
+								</ul>
+							</div>
+							</section>
+					</div>
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>Perfil Profesional</h2>
+							<p  style=text-align:justify>Analista de Datos con formación en ingeniería de sistemas. Poseo competencias en <b>SQL</b> y <b>Python</b>. 
+								Con manejo de bases de datos como <b>Excel</b>, <b>SQL Server</b> y <b>PostgreSQL</b>.
+								Además, tengo experiencia en la visualización de datos y creación de dashboards con <b>Tableau</b> y <b>Power BI</b>. 
+								</p>
+							<!--<ul class="actions">
+								<li><a href="generic.html" class="button">Learn More</a></li>
+							</ul>-->
+						</section>
+						<section>
+							<h2>Contacto</h2>
+							<dl class="alt">
+								<dt>Telefono</dt>
+								<dd>(+57) 317 8800 090</dd>
+								<dt>Email</dt>
+								<dd>aoh.alejandro@gmail.com</a></dd>
+							</dl>
+							<ul class="icons">
+								<li><a href="https://www.linkedin.com/in/alejandro-orozco-hurtado/" target="_blank" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
+								<li><a href="https://github.com/alejandro1403" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section>
+						<!--<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>-->
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
