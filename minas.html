@@ -33,12 +33,96 @@
 								<h2><b>Introducción</b></h2>
 								<p>Base de datos: <a href="https://www.datos.gov.co/Inclusi-n-Social-y-Reconciliaci-n/Eventos-Minas-Antipersonal-en-Colombia/sgp4-3e6k/about_data" target="_blank" style="color: rgb(101, 161, 211)">Gov Datos Abiertos Eventos Minas Antipersonal en Colombia</a></p>
 								<!-- Colombia Table -->
-									<p style=text-align:justify>Este proyecto se centró en la exploración de datos sobre minas en Colombia utilizando Excel como herramienta principal. 
-									El objetivo fue analizar diferentes aspectos relacionados con eventos de minas antipersonas, incluyendo la frecuencia y 
-									distribución de los tipos de eventos, su ocurrencia por departamento, y su evolución a lo largo del tiempo. 
-									Este análisis permitió obtener un pequeño vistazo sobre la situación armada en el país, 
-									identificando patrones y tendencias significativas en los datos recolectados.</p>
-                                    <h2><b>En proceso (debajo hay un dashboard de excel toma algo de tiempo en cargar)</b></h2>
+									<p style=text-align:justify>En Colombia, las minas antipersonas son un trágico rastro del conflicto 
+										armado que ha afectado al país durante décadas. Estas minas han dejado una huella profunda en la 
+										sociedad, causando innumerables víctimas y dificultando el desarrollo en varias regiones. 
+										Este proyecto se centró en la exploración de datos sobre minas en Colombia utilizando 
+										Excel como herramienta principal. El objetivo fue analizar diferentes aspectos relacionados con eventos de minas antipersonas, 
+										incluyendo la frecuencia y distribución de los tipos de eventos, su ocurrencia por departamento, y su evolución a lo largo del 
+										tiempo. Este análisis permitió obtener un pequeño vistazo sobre la situación armada en el país, identificando patrones y tendencias 
+										significativas en los datos recolectados.</p>
+                                    <h2><b>Exploración de la base de datos</b></h2>
+									<p style=text-align:justify>Para iniciar, se exploró la base de datos destinada a este análisis, revisando las columnas disponibles, así como los tipos de datos y valores asignados a cada una. 
+									Este paso es crucial para identificar con qué columnas se trabajara.</p>
+									<div class="table-wrapper">
+										<table class="dataframe">
+											<thead>
+												<tr style="text-align: right;">
+												<th></th>
+												<th>TIPO_EVENTO</th>
+												<th>DEPARTAMENTO</th>
+												<th>CODIGO_DANE_DEPARTAMENTO</th>
+												<th>MUNICIPIO</th>
+												<th>CODIGO_DANE_MUNICIPIO</th>
+												<th>AÑO</th>
+												<th>MES</th>
+												<th>EVENTO</th>
+												<th>TIPO_LUGAR</th>
+												<th>TIPO_AREA</th>
+												<th>LATITUD_CABECERA</th>
+												<th>LONGITUD_CABECERA</th>
+												<th>SITIO</th>
+												<th>UBICACION</th>
+												</tr>
+												</thead>
+											<tbody>
+												<tr>
+												<td>The Sospecha de campo minado</td>
+												<td>SANTANDER</td>
+												<td>68</td>
+												<td>SAN VICENTE DE CHUCURÍ</td>
+												<td>68.689</td>
+												<td>2.014</td>
+												<td>10</td>
+												<td>Incidente</td>
+												<td>Fincas</td>
+												<td>Rural</td>
+												<td>6,84073</td>
+												<td>-73,53009</td>
+												<td>Sospecha De Campo Minado</td>
+												<td>POINT (-73.53009 6.84073)</td>
+												</tr>
+												<tr>
+												<td>The Sospecha de campo minado</td>
+												<td>SANTANDER</td>
+												<td>68</td>
+												<td>EL CARMEN</td>
+												<td>68.235</td>
+												<td>2.013</td>
+												<td>9</td>
+												<td>Incidente</td>
+												<td>Campo</td>
+												<td>Rural</td>
+												<td>6,72416</td>
+												<td>-73,60923</td>
+												<td>Sospecha De Campo Minado</td>
+												<td>POINT (-73.60923 6.72416)</td>
+												</tr>
+												<tr>
+												<td>The Sospecha de campo minado</td>
+												<td>ANTIOQUIA</td>
+												<td>5</td>
+												<td>GRANADA</td>
+												<td>5.313</td>
+												<td>2.015</td>
+												<td>4</td>
+												<td>Incidente</td>
+												<td>Campo</td>
+												<td>Rural</td>
+												<td>6,11738</td>
+												<td>-75,10259</td>
+												<td>Sospecha De Campo Minado</td>
+												<td>POINT (-75.10259 6.11738)</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<p style=text-align:justify>Se identificaron columnas redundantes, como las de longitud y latitud, 
+										que podrían sustituirse por la columna de ubicación. Las columnas de código DANE, que representan departamento y municipio, 
+										también resultaron ser redundantes en el contexto de este proyecto, por lo que se descartaron. La columna de sitio, que incluía 
+										valores como corregimientos o veredas, presentaba una gran variedad de datos, haciéndola menos útil para el análisis. 
+										Finalmente, se realizó un conteo de la columna tipo lugar, encontrando que de las 39,172 filas, 36,979 contenían el valor 
+										"Sin información", lo que generaría un sesgo significativo en el análisis, por lo que también se decidió excluir esta columna.</p>
                                     <iframe width="1150" height="900" frameborder="0" scrolling="no" 
                                         src="https://onedrive.live.com/embed?resid=EFBBFE4D44F25008%21520157&authkey=%21AKR6igL3qP7mBtE&em=2&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True">
                                     </iframe>
