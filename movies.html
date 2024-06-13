@@ -20,7 +20,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<span class="logo" ><img height="300" src="images/cinema.png" alt="" /></span>
+						<span class="logo" ><img height="300" src="images/movies/cinema.png" alt="" /></span>
 						<h1>Explorando el desempeño de películas: un análisis visual</h1>
 						<p>Projecto de Python</p>
 					</header>
@@ -30,7 +30,7 @@
 							<section id="content" class="main">
 								<!-- Introducción -->	
 								<h2><b>Introducción</b></h2>
-								<p>Base de datos: <a href="https://www.kaggle.com/datasets/danielgrijalvas/movies/data" target="_blank" style="color: rgb(101, 161, 211)">Kaggle Movie Industry</a></p>
+								<p>Fuente: <a href="https://www.kaggle.com/datasets/danielgrijalvas/movies/data" target="_blank" style="color: rgb(101, 161, 211)">Kaggle Movie Industry</a></p>
 								<p style=text-align:justify>Aunque ir al cine puede no ser tan común como antes, el cine sigue siendo el 
 								principal generador de ingresos en la industria cinematográfica. 
 								Sin embargo, si bien las ganancias son un aspecto crucial del rendimiento de una película, no son el único factor determinante. 
@@ -61,7 +61,7 @@ matplotlib.rcParams[<span style="color: #BD4024">"figure.figsize"</span>] = (<sp
 								<pre><code>df = pd.read_csv(<span style="color: #BD4024">"..\movies.csv"</span>)</code></pre>
 								<!-- Linea 2 -->
 								<p style=text-align:justify>Finalmente, se utilizó el método df.head para mostrar algunas filas del 
-								DataFrame y observar las columnas y el tipo de datos que se utilizaran en el proyecto.</p>
+								data frame y observar las columnas y el tipo de datos que se utilizaran en el proyecto.</p>
 								<pre><code>df.head(<span style="color: green">5</span>)</code></pre>
 								<div class="table-wrapper">
 									<table class="dataframe">
@@ -182,7 +182,7 @@ matplotlib.rcParams[<span style="color: #BD4024">"figure.figsize"</span>] = (<sp
 								<!-- Linea 3 -->
 								<br><h2><b>Procesamiento de datos.</b></h2>
 								<p style=text-align:justify>Para tener una comprensión clara de los tipos de datos que se iban a utilizar, 
-								se verificaron los datatypes exactos de cada columna.</p>
+								se verificaron los data types exactos de cada columna.</p>
 								<pre><code>df.dtypes</code></pre>
 								<pre><code>name         object
 rating       object
@@ -201,9 +201,9 @@ company      object
 runtime     float64
 dtype: object</code></pre>
 								<!-- Linea 4 -->
-								<p style=text-align:justify>Se observó que datos como "votes" (cantidad de votos que la película tiene en IMDb), 
-								que solo pueden ser enteros (una persona vota o no vota), aparecían como float64. 
-								También se revisaron las columnas en busca de valores nulos.</p>
+								<p style=text-align:justify>Se observó que la columna "votes" (cantidad de votos que la película tiene en IMDb), 
+									que debería ser discreta (una persona vota o no vota), aparecían como float64. 
+									También se revisaron las columnas en busca de valores nulos.</p>
 								<pre><code>df.isnull().mean()</code></pre>
 								<pre><code>name        0.000000
 rating      0.010042
@@ -250,7 +250,7 @@ plt.xlabel(<span style="color: #BD4024">"Año"</span>)
 plt.ylabel(<span style="color: #BD4024">"Ingresos promedio"</span>)
 plt.show()</code></pre>
 								<!-- Grafico tendencia -->
-								<div class="col-12"><span class="image fit"><img src="images/lineplot.png" alt="" /></span></div>
+								<div class="col-12"><span class="image fit"><img src="images/movies/lineplot.png" alt="" /></span></div>
 								<!-- Box 1 -->				
 								<p style=text-align:justify>Se observó que los ingresos promedio de las películas habían aumentado de manera constante a 
 								lo largo de los años, desde 1980 hasta 2020. En estos 40 años, los ingresos mostraron un incremento general, 
@@ -268,7 +268,7 @@ plt.ylabel(<span style="color: #BD4024">"Presupuesto"</span>)
 plt.xticks(rotation=<span style="color: green">45</span>)
 plt.show()</code></pre>
 								<!-- Box 1 plot -->
-								<div class="col-12"><span class="image fit"><img src="images/boxplot1.png" alt="" /></span></div>
+								<div class="col-12"><span class="image fit"><img src="images/movies/boxplot1.png" alt="" /></span></div>
 								<!-- Box 2 -->			
 								<p style=text-align:justify>Se observó que las películas animadas suelen ser más caras de producir, 
 								con una mediana centrada por encima de todos los géneros. 
@@ -291,7 +291,7 @@ plt.ylabel(<span style="color: #BD4024">"Recaudación Bruta"</span>)
 plt.xticks(rotation=<span style="color: green">45</span>)
 plt.show()</code></pre>
 								<!-- Blox 2 plot -->
-								<div class="col-12"><span class="image fit"><img src="images/boxplot2.png" alt="" /></span></div>
+								<div class="col-12"><span class="image fit"><img src="images/movies/boxplot2.png" alt="" /></span></div>
 								<!-- Distribucion -->
 								<p style=text-align:justify>Al observar este gráfico, notaron que los valores del eje Y estaban en 1e9 frente a 1e8 del gráfico anterior, 
 								lo que sugirió que, en general, las películas generaban ganancias o, lo que es más probable, 
@@ -314,7 +314,7 @@ plt.xlabel(<span style="color: #BD4024">"Calificación"</span>)
 plt.ylabel(<span style="color: #BD4024">"Frecuencia"</span>)
 plt.show()</code></pre>
 								<!-- Distribucion plot -->
-								<div class="col-12"><span class="image fit"><img src="images/histplot.png" alt="" /></span></div>
+								<div class="col-12"><span class="image fit"><img src="images/movies/histplot.png" alt="" /></span></div>
 								<p style=text-align:justify>En el histograma, se observó que la mayoría de las películas tenían una calificación entre 6 y 7. 
 								En una escala de 1 a 10, se esperaría que los valores gravitaran alrededor de 5, 
 								con pocos valores cerca de 1 y 10, indicando que la mayoría de peliculas son mediocres y muy pocas son excelentes o definitivamente malas.
@@ -415,7 +415,7 @@ sns.heatmap(corr_matrix, annot=<span style="color: green">True</span>, cmap=cmap
 
 plt.title(<span style="color: #BD4024">"Matriz de correlación valores numéricos"</span>)</code></pre>
 								<!-- Correlations plot -->
-								<div class="col-12"><span class="image fit"><img src="images/heatmap.png" alt="" /></span></div>
+								<div class="col-12"><span class="image fit"><img src="images/movies/heatmap.png" alt="" /></span></div>
 								<p style=text-align:justify>En este caso particular, aunque no 
 									tenían muchos valores numéricos, fue fácil identificar qué columnas estaban correlacionadas. Sin embargo, con muchas columnas, 
 									sería difícil de visualizar, por lo que también se filtró la matriz de correlación para mostrar solo los valores mayores que 0.5, 
@@ -454,7 +454,7 @@ ax2.set_ylabel(<span style="color: #BD4024">"Ingresos"</span>)
 
 plt.show()</code></pre>
 								<!-- Scatter plot-->
-								<div class="col-12"><span class="image fit"><img src="images/scatter.png" alt="" /></span></div>
+								<div class="col-12"><span class="image fit"><img src="images/movies/scatter.png" alt="" /></span></div>
 								<p style=text-align:justify>Se llegaron a las siguientes conclusiones:
 								<u1>
 									<li style=text-align:justify>Se evidencia una clara correlación entre el presupuesto de una película y sus ingresos brutos. A medida que el presupuesto aumenta, 

@@ -33,105 +33,224 @@
 								<h2><b>Introducción</b></h2>
 								<p>Base de datos: <a href="https://www.datos.gov.co/Inclusi-n-Social-y-Reconciliaci-n/Eventos-Minas-Antipersonal-en-Colombia/sgp4-3e6k/about_data" target="_blank" style="color: rgb(101, 161, 211)">Gov Datos Abiertos Eventos Minas Antipersonal en Colombia</a></p>
 								<!-- Colombia Table -->
-									<p style=text-align:justify>En Colombia, las minas antipersonas son un trágico rastro del conflicto 
+									<p style=text-align:justify>En Colombia, las minas antipersonal son un trágico rastro del conflicto 
 										armado que ha afectado al país durante décadas. Estas minas han dejado una huella profunda en la 
 										sociedad, causando innumerables víctimas y dificultando el desarrollo en varias regiones. 
 										Este proyecto se centró en la exploración de datos sobre minas en Colombia utilizando 
-										Excel como herramienta principal. El objetivo fue analizar diferentes aspectos relacionados con eventos de minas antipersonas, 
+										Excel como herramienta principal. El objetivo fue analizar diferentes aspectos relacionados con eventos de minas antipersonal, 
 										incluyendo la frecuencia y distribución de los tipos de eventos, su ocurrencia por departamento, y su evolución a lo largo del 
 										tiempo. Este análisis permitió obtener un pequeño vistazo sobre la situación armada en el país, identificando patrones y tendencias 
 										significativas en los datos recolectados.</p>
-                                    <h2><b>Exploración de la base de datos</b></h2>
-									<p style=text-align:justify>Para iniciar, se exploró la base de datos destinada a este análisis, revisando las columnas disponibles, así como los tipos de datos y valores asignados a cada una. 
+                                    <h2><b>Exploración del data frame</b></h2>
+									<p style=text-align:justify>Para iniciar, se exploró el data frame, revisando las columnas disponibles, así como los tipos de datos y valores asignados a cada una. 
 									Este paso es crucial para identificar con qué columnas se trabajara.</p>
 									<div class="table-wrapper">
 										<table class="dataframe">
 											<thead>
 												<tr style="text-align: right;">
-												<th></th>
-												<th>TIPO_EVENTO</th>
-												<th>DEPARTAMENTO</th>
-												<th>CODIGO_DANE_DEPARTAMENTO</th>
-												<th>MUNICIPIO</th>
-												<th>CODIGO_DANE_MUNICIPIO</th>
-												<th>AÑO</th>
-												<th>MES</th>
-												<th>EVENTO</th>
-												<th>TIPO_LUGAR</th>
-												<th>TIPO_AREA</th>
-												<th>LATITUD_CABECERA</th>
-												<th>LONGITUD_CABECERA</th>
-												<th>SITIO</th>
-												<th>UBICACION</th>
+													<th></th>
+													<th>TIPO_EVENTO</th>
+													<th>DEPARTAMENTO</th>
+													<th>CODIGO_DANE_DEPARTAMENTO</th>
+													<th>MUNICIPIO</th>
+													<th>CODIGO_DANE_MUNICIPIO</th>
+													<th>AÑO</th>
+													<th>MES</th>
+													<th>EVENTO</th>
+													<th>TIPO_LUGAR</th>
+													<th>TIPO_AREA</th>
+													<th>LATITUD_CABECERA</th>
+													<th>LONGITUD_CABECERA</th>
+													<th>SITIO</th>
+													<th>UBICACION</th>
 												</tr>
 												</thead>
 											<tbody>
 												<tr>
-												<td>The Sospecha de campo minado</td>
-												<td>SANTANDER</td>
-												<td>68</td>
-												<td>SAN VICENTE DE CHUCURÍ</td>
-												<td>68.689</td>
-												<td>2.014</td>
-												<td>10</td>
-												<td>Incidente</td>
-												<td>Fincas</td>
-												<td>Rural</td>
-												<td>6,84073</td>
-												<td>-73,53009</td>
-												<td>Sospecha De Campo Minado</td>
-												<td>POINT (-73.53009 6.84073)</td>
+													<td >1</td>
+													<td>Sospecha de campo minado</td>
+													<td>SANTANDER</td>
+													<td>68</td>
+													<td>SAN VICENTE DE CHUCURÍ</td>
+													<td>68.689</td>
+													<td>2.014</td>
+													<td>10</td>
+													<td>Incidente</td>
+													<td>Fincas</td>
+													<td>Rural</td>
+													<td>6,84073</td>
+													<td>-73,53009</td>
+													<td>Sospecha De Campo Minado</td>
+													<td>POINT (-73.53009 6.84073)</td>
 												</tr>
 												<tr>
-												<td>The Sospecha de campo minado</td>
-												<td>SANTANDER</td>
-												<td>68</td>
-												<td>EL CARMEN</td>
-												<td>68.235</td>
-												<td>2.013</td>
-												<td>9</td>
-												<td>Incidente</td>
-												<td>Campo</td>
-												<td>Rural</td>
-												<td>6,72416</td>
-												<td>-73,60923</td>
-												<td>Sospecha De Campo Minado</td>
-												<td>POINT (-73.60923 6.72416)</td>
+													<td >2</td>
+													<td>Sospecha de campo minado</td>
+													<td>SANTANDER</td>
+													<td>68</td>
+													<td>EL CARMEN</td>
+													<td>68.235</td>
+													<td>2.013</td>
+													<td>9</td>
+													<td>Incidente</td>
+													<td>Campo</td>
+													<td>Rural</td>
+													<td>6,72416</td>
+													<td>-73,60923</td>
+													<td>Sospecha De Campo Minado</td>
+													<td>POINT (-73.60923 6.72416)</td>
 												</tr>
 												<tr>
-												<td>The Sospecha de campo minado</td>
-												<td>ANTIOQUIA</td>
-												<td>5</td>
-												<td>GRANADA</td>
-												<td>5.313</td>
-												<td>2.015</td>
-												<td>4</td>
-												<td>Incidente</td>
-												<td>Campo</td>
-												<td>Rural</td>
-												<td>6,11738</td>
-												<td>-75,10259</td>
-												<td>Sospecha De Campo Minado</td>
-												<td>POINT (-75.10259 6.11738)</td>
+													<td >3</td>
+													<td>Sospecha de campo minado</td>
+													<td>ANTIOQUIA</td>
+													<td>5</td>
+													<td>GRANADA</td>
+													<td>5.313</td>
+													<td>2.015</td>
+													<td>4</td>
+													<td>Incidente</td>
+													<td>Campo</td>
+													<td>Rural</td>
+													<td>6,11738</td>
+													<td>-75,10259</td>
+													<td>Sospecha De Campo Minado</td>
+													<td>POINT (-75.10259 6.11738)</td>
+												</tr>
+												<tr>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+														<td ><b>⋮</b></td>
+												</tr>
+												<tr>
+													<td >39172</td>
+													<td>Desminado militar en operaciones</td>
+													<td>CAQUETA</td>
+													<td>18</td>
+													<td>MONTAÑITA</td>
+													<td>18.410</td>
+													<td>2.023</td>
+													<td>7</td>
+													<td>Incidente</td>
+													<td>Sin informacion</td>
+													<td>Rural</td>
+													<td>1,269722222</td>
+													<td>-75,208889</td>
+													<td>LA UNION PENEYA</td>
+													<td>POINT (-75,2089 1,269722222)</td>
 												</tr>
 											</tbody>
 										</table>
-									</div>
-									<p style=text-align:justify>Se identificaron columnas redundantes, como las de longitud y latitud, 
+									</div><br>
+									<p style=text-align:justify>Se identificaron características redundantes, como las de longitud y latitud, 
 										que podrían sustituirse por la columna de ubicación. Las columnas de código DANE, que representan departamento y municipio, 
 										también resultaron ser redundantes en el contexto de este proyecto, por lo que se descartaron. La columna de sitio, que incluía 
 										valores como corregimientos o veredas, presentaba una gran variedad de datos, haciéndola menos útil para el análisis. 
 										Finalmente, se realizó un conteo de la columna tipo lugar, encontrando que de las 39,172 filas, 36,979 contenían el valor 
 										"Sin información", lo que generaría un sesgo significativo en el análisis, por lo que también se decidió excluir esta columna.</p>
-                                    <iframe width="1150" height="900" frameborder="0" scrolling="no" 
-                                        src="https://onedrive.live.com/embed?resid=EFBBFE4D44F25008%21520157&authkey=%21AKR6igL3qP7mBtE&em=2&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True">
-                                    </iframe>
-								<p style=text-align:justify>conclusiones:
-									<u1>
-										<li style=text-align:justify>Primera</li>
-									</ul>
-                                </p>
-                                <div class="col-12"><span class="image fit"><img src="images/mapa.png" alt="" /></span></div>
+									<h2><b>Exploración Inicial de la Base de Datos</b></h2>
+									<p style=text-align:justify>Una vez explorado el dataframe e identificado sus características y registros, se procedió a trabajar en Excel.</p>
+
+									<!-- Temp Eve -->
+									<h4><b>1. Evolución anual de los eventos de minas antipersonales</b></h4>
+									<p style=text-align:justify>Para comprender de manera más clara cómo ha evolucionado la cantidad de eventos que involucran minas en 
+										Colombia a lo largo del tiempo, se decidió determinar la cantidad de eventos que ocurrieron cada año mediante una tabla dinámica, 
+										utilizando "año" como fila y un conteo de eventos como valores.</p>
+									<!-- Temp Eve Table -->
+									<iframe width="200" height="500" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=EFBBFE4D44F25008%21520160&authkey=%21AOWhiuiM4fQWpCg&em=2&ActiveCell='Pivot%20table'!B1&Item=PivotTable16&wdHideGridlines=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True"></iframe>
+									<p style=text-align:justify>En la tabla, se pudo apreciar un incremento en los eventos entre los años 2002 y 2003, seguido de un 
+										decremento notable después del 2016. Para visualizar esta tendencia con mayor claridad, se creó un gráfico de líneas.</p>
+									<!-- Temp Eve plot -->
+									<div class="col-12"><span class="image fit"><img src="images/mines/yearlineplot.png" alt="" /></span></div>
+									<p style=text-align:justify>El gráfico mostró un aumento en los eventos a partir del año 2000, 
+										alcanzando un pico en 2012 y luego una caída gradual hasta 2017, donde se observó una disminución más pronunciada. 
+										Aunque la cantidad de eventos se mantuvo baja durante los años recientes, en 2023 se registró un nuevo incremento. 
+										La línea de tendencia también indicó una tendencia general al aumento, 
+										influenciada en parte por el gran pico en los primeros 15 años de los 2000.</p>
+
+									<!-- Area Type Eve -->
+									<h4><b>2. Distribución de eventos por tipo de área</b></h4>
+									<p style=text-align:justify>Para entender mejor cómo se distribuyen los eventos por tipo de áreas, 
+										se creó otra tabla dinámica en Excel. En esta tabla, se utilizó "tipo de area" como fila y un conteo de los eventos como valores.</p>
+									<!-- Area Type Eve  Table-->
+									<iframe width="300" height="120" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=EFBBFE4D44F25008%21520160&authkey=%21AOWhiuiM4fQWpCg&em=2&ActiveCell='Pivot%20table'!F18&Item=PivotTable17&wdHideGridlines=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True"></iframe>
+									<p style=text-align:justify>La tabla reveló una disparidad significativa entre las áreas rurales y urbanas, 
+									con una cantidad de eventos en áreas rurales 100 veces mayor que en áreas urbanas: 380 eventos en áreas urbanas frente a 38,000 en áreas rurales.</p>
+									<!-- Area Type Eve plot -->
+									<div class="col-12"><span class="image fit"><img src="images/mines/typeareapieplot.png" alt="" /></span></div>
+									<p style=text-align:justify>El grafico destaca claramente la desproporción, ya que el 99% de los casos de minas antipersonales ocurrieron en áreas rurales.</p>
+
+									<!-- Dept Eve -->
+									<h4><b>3. Frecuencia de eventos por departamento</b></h4>
+									<p style=text-align:justify>Ahora, se buscó determinar qué departamento presentaba el mayor número de minas reportadas. 
+										Para ello, se creó una tabla dinámica utilizando la característica "evento" como columna, la cual es binaria y puede ser "Incidente" o "Accidente", y 
+										como fila el departamento donde ocurrió. Para los valores, se realizó un conteo de eventos, 
+										ermitiendo así conocer cuántos eventos ocurrieron por departamento y cuántos fueron incidentes o accidentes.</p>
+									<!-- Dept Eve Table -->
+									<iframe width="445" height="500" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=EFBBFE4D44F25008%21520160&authkey=%21AOWhiuiM4fQWpCg&em=2&ActiveCell='Pivot%20table'!P1&Item=PivotTable19&wdHideGridlines=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True"></iframe>
+									<p style=text-align:justify>En la tabla, se observó que la mayoría de los eventos ocurrieron en los departamentos de Antioquia y Meta. 
+										Se destacó que entre los dos primeros lugares y el tercero, hubo una gran diferencia, con Antioquia teniendo casi el doble de eventos que Caquetá, 
+										que ocupó el tercer puesto. El departamento con menos eventos fue Amazonas, con solo cuatro eventos registrados en 30 años. Además, se resaltó que la gran mayoría de eventos 
+										fueron incidentes, con 7,299 accidentes frente a 31,872 incidentes. 
+										A pesar de los lamentables accidentes, fue un alivio saber que 30,000 de los eventos fueron recolecciones o detonaciones seguras.</p>
+									<!-- Dept Eve plot -->
+									<div class="col-12"><span class="image fit"><img src="images/mines/depthistplot.png" alt="" /></span></div>
+									<p style=text-align:justify>Al graficar estos resultados, se ve mas claro el salto en el número de eventos entre los dos primeros departamentos y el resto.</p>
+
+									<!-- Event type Eve -->
+									<h4><b>4. Clasificación de eventos por tipo de suceso</b></h4>
+									<p style=text-align:justify>Para entender mejor como fueron tratados los eventos de mina antipersonal, se creó otra tabla dinámica en Excel. 
+									En esta tabla, se utilizó "tipo de evento" como fila y un conteo de los eventos como valores.</p>
+									<!-- Event type Table -->
+									<iframe width="392" height="250" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=EFBBFE4D44F25008%21520160&authkey=%21AOWhiuiM4fQWpCg&em=2&ActiveCell='Pivot%20table'!F33&Item=PivotTable24&wdHideGridlines=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True"></iframe>
+									<p style=text-align:justify>El análisis reveló que la mayoría de los eventos, casi 26 mil, 
+									fueron desminados militares en operaciones, categorizados como incidentes, indicando desarmamiento o detonación segura.
+									Seguidos lamentablemente por accidentes por Minas Antipersonales (MAP).<br>
+									Comparado con estas categorías, hubo pocos casos de arsenal almacenado, producción de minas y munición sin explotar. Aunque los accidentes por Municiones 
+									sin Explotar (MUSE) fueron menores, se registraron aproximadamente 250 casos.</p>
+									<!-- Event type plot -->
+									<div class="col-12"><span class="image fit"><img src="images/mines/typeeventpieplot.png" alt="" /></span></div>
+									<p style=text-align:justify>En el gráfico, se observa que un poco más del 18% de los eventos fueron accidentes (MAP y MUSE), 
+									lo que sugiere que el 82% de los casos fueron tratados de forma segura.</p>
+
+									<!-- Month -->
+									<h4><b>5. Análisis mensual de eventos de minas antipersonales</b></h4>
+									<p style=text-align:justify>Inspirado por la historia de un alto el fuego no oficial durante la Navidad en la Primera Guerra Mundial, 
+									se decidió investigar si un fenómeno similar ocurrió en Colombia con respecto a los eventos de minas antipersonales. 
+									Para ello, se analizó la cantidad de eventos por mes utilizando una tabla dinámica en Excel.</p>
+									<!-- Month Table -->
+									<iframe width="350" height="350" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=EFBBFE4D44F25008%21520160&authkey=%21AOWhiuiM4fQWpCg&em=2&ActiveCell='Pivot%20table'!A39&Item=PivotTable25&wdHideGridlines=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True"></iframe>
+									<p style=text-align:justify>A primera vista, se observó una disminución en el número total de eventos en diciembre. 
+									Sin embargo, al desglosar los eventos en accidentes e incidentes, la realidad fue diferente a la esperada. 
+									La caída en la cantidad total de eventos en diciembre fue principalmente influenciada por la reducción de incidentes.</p>
+									<!-- Month plot -->
+									<div class="col-12"><span class="image fit"><img src="images/mines/monthlineplot.png" alt="" /></span></div>
+									<p style=text-align:justify>Este descenso en diciembre se puede apreciar claramente en el gráfico. Mientras que el cambio en los accidentes es apenas notable, 
+									la disminución de incidentes es bastante obvia. Esto sugiere que la reducción de incidentes en diciembre probablemente se debe a las vacaciones del personal o a una menor 
+									tasa de reportes de minas antes de convertirse en accidentes. Aunque la disminución en los accidentes no sea muy pronunciada, 
+									sigue habiendo un pequeño declive en diciembre, con un promedio de más de 100 minas menos que en otros meses, excluyendo noviembre, posiblemente por razones similares.</p>
+									
+									<!-- Map -->
+									<h4><b>6. Visualización de eventos en el mapa de Colombia</b></h4>
+									<p style=text-align:justify>Finalmente, se realizó una visualización en Power BI del mapa de Colombia para 
+									ilustrar los eventos relacionados con minas antipersonales.</p>
+									<div class="col-12"><span class="image fit"><img src="images/mines/mapa.png" alt="" /></span></div>
+									<p style=text-align:justify>En este mapa, se utilizaron puntos verdes para representar 
+									los incidentes y puntos rojos para indicar los accidentes. Esta representación gráfica permitió identificar 
+									claramente las zonas con mayor incidencia de cada tipo de evento, ofreciendo una perspectiva geográfica sobre la distribución 
+									y concentración de los sucesos a lo largo del país.</p>
 							<p><a href="https://github.com/alejandro1403/dquest/blob/master/projects/minasColombia/Eventos_Minas_Antipersonal_en_Colombia_20240608.xlsx" target="_blank" style="color: rgb(101, 161, 211)">Ver Excel file en GitHub</a></p>
 								<!-- Final -->
 							<div class="flex-container"> 
