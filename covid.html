@@ -386,8 +386,8 @@
 									</table>
 								</div>
 								<p style=text-align:justify>Los resultados mostraron que Europa presentó la mayor cantidad de muertes, seguida por América del Norte. 
-								Considerando los resultados de la consulta anterior, en la que Estados Unidos tenía aproximadamente 1.200.000 muertes, 
-								se determinó que este país representaba el 69% de las muertes totales en América del Norte.</p>
+								Al considerar los datos, se observó que Estados Unidos, con aproximadamente 1.200.000 muertes, representaba el 69% de las muertes totales en América del Norte. 
+								Además, se puede apreciar que África y Oceanía tuvieron significativamente menos fallecidos que los demás continentes.</p>
 								<!-- Muertes totales  y letalidad -->
 								<h4><b>5. Muertes totales por COVID-19 y letalidad a nivel mundial.</b></h4>
 								<p style=text-align:justify>Se examinaron las muertes totales por COVID y la letalidad global del COVID a nivel mundial.</p>
@@ -420,39 +420,9 @@
 								</div>
 								<p style=text-align:justify>De los 770 millones de casos de contagio, se registraron 7 millones de muertes atribuidas al COVID-19. 
 									Por lo que COVID-19 presenta una letalidad histórica mundial del COVID-19 del 0.9%.</p>
-								<h4><b>6. Visualización de muertes por COVID-19 y letalidad a nivel mundial.</b></h4>
-								<p style=text-align:justify>Con la ayuda de Tableau, se visualizaron los datos de fallecidos por COVID-19. </p>
-								<p style=text-align:justify>En el mapa, los países se representaron con diferentes tonalidades de naranja, donde un tono más oscuro indicaba un mayor número de fallecidos. 
-								Estados Unidos presentó la tonalidad más oscura, seguido por Brasil e India.</p>
-									<!-- Muertes totales  y letalidad Dashboard Tableau -->
-									<div class='tableauPlaceholder' id='viz1717966561782' style='position: relative'>
-										<noscript><a href='#'>
-											<img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;DashboardCOVIDdeaths&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a>
-										</noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> 
-											<param name='site_root' value='' /><param name='name' value='DashboardCOVIDdeaths&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' />
-											<param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;DashboardCOVIDdeaths&#47;Dashboard1&#47;1.png' /> 
-											<param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' />
-											<param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object>
-									</div>                
-											<script type='text/javascript'>                    var divElement = document.getElementById('viz1717966561782');          
-											          var vizElement = divElement.getElementsByTagName('object')[0];                    
-													  if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';
-													  vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) 
-													  { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else 
-													  { vizElement.style.width='100%';vizElement.style.height='1127px';}                     
-													  var scriptElement = document.createElement('script');                    
-													  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                   
-													   vizElement.parentNode.insertBefore(scriptElement, vizElement);               
-											 </script>
-									<!-- Final Tableau -->
-								<p style=text-align:justify>El gráfico de barras, se mostró la cantidad de fallecidos por continente, 
-									revelando que África y Oceanía tuvieron significativamente menos fallecidos que los demás continentes, 
-									con Europa liderando en número de fallecimientos. <br>Por último, se observó el avance de la cantidad de fallecidos en los países a 
-									través de los trimestres de los años 2020 a 2024. Esta última visualización incluyó un filtro que permitía mostrar u ocultar la línea de 
-									tiempo de un país específico, facilitando el análisis detallado de la evolución de los fallecidos por COVID-19.</p>
 								<!-- Contagio -->
 								<h2><b>Contagio</b></h2>
-								<h4><b>7. Probabilidad histórica de contagio de COVID-19 en cada pais por fechas.</b></h4>
+								<h4><b>6. Probabilidad histórica de contagio de COVID-19 en cada pais por fechas.</b></h4>
 								<p style=text-align:justify>Se exploró la probabilidad de contagio en cada país por fecha, así como la probabilidad de contagio específica para cada fecha.</p>
 								<pre><code><span style="color: blue">SELECT</span> location, date, population, total_cases, <span style="color: rgb(236, 104, 181)">ROUND</span>(total_cases*100/population,9) <span style="color: blue">AS </span>case_percentage
 <span style="color: blue">FROM</span> CovidProjectSQL..[owid-covid-data]
@@ -530,7 +500,7 @@
 								Sin embargo, se determinó que este valor no era preciso, ya que no se disponía de información sobre los casos no 
 								confirmados que podrían haber estado propagando el virus. Por lo tanto, es probable que esta probabilidad fuera mucho más alta en realidad.</p>
 								<!-- Contagio DESC -->
-								<h4><b>8. Probabilidad histórica de contagio de COVID-19 en cada país.</b></h4>
+								<h4><b>7. Probabilidad histórica de contagio de COVID-19 en cada país.</b></h4>
 								<p style=text-align:justify>Se exploró la probabilidad histórica de contagio de COVID en cada país, ordenándolos de manera descendente según aquellos con la 
 								mayor probabilidad de contagio.</p>
 								<pre><code><span style="color: blue">SELECT</span> location, <span style="color: rgb(236, 104, 181)">MAX</span>(population) <span style="color: blue">AS </span>population, <span style="color: rgb(236, 104, 181)">MAX</span>(total_cases) <span style="color: blue">AS </span>total_cases, 
@@ -596,7 +566,7 @@
 								queda fuera del alcance de esta exploración de datos.</p>
 								<!-- Vacunación -->
 								<h2><b>Vacunación</b></h2>
-								<h4><b>9. Población total vacunada en cada país hasta la fecha.</b></h4>
+								<h4><b>8. Población total vacunada en cada país hasta la fecha.</b></h4>
 								<p style=text-align:justify>Se produjeron varias vacunas para el COVID-19, con la mayoría requiriendo un esquema completo de dos dosis, al que posteriormente se agregaron dosis de refuerzo. 
 								En esta sección, se decidió explorar cuántas personas recibieron al menos una dosis y cuántas completaron el esquema de vacunación.</p>
 								<pre><code><span style="color: blue">SELECT</span> location, <span style="color: rgb(236, 104, 181)">MAX</span>(population) <span style="color: blue">AS </span>population, <span style="color: rgb(236, 104, 181)">MAX</span>(people_vaccinated) <span style="color: blue">AS </span>people_vaccinated, 
@@ -661,7 +631,7 @@
 									distribución y acceso a la vacuna como la eficacia de las campañas de información acerca de la vacuna y 
 									su esquema para aquellos que accedieron a la dosis inicial.</p>
 								<!-- CTE-->
-								<h4><b>10. Porcentaje de la población vacunada en cada país hasta la fecha.</b></h4>
+								<h4><b>9. Porcentaje de la población vacunada en cada país hasta la fecha.</b></h4>
 								<p style=text-align:justify>En la tabla anterior se mostró cuántas personas se vacunaron y cuántas completaron el esquema de vacunación. 
 									En esta sección, se presentaron los porcentajes exactos de la población vacunada y de aquellos que completaron el esquema de vacunación.</p>
 								<pre><code><span style="color: blue">WITH</span> pop_vac (location, population, people_vaccinated, people_fully_vaccinated)
@@ -734,7 +704,7 @@
 								Aquí, los resultados mostraron que exactamente el 46.6% de la población se vacunó y el 44.7% completó el esquema de vacunación. 
 								</p>
 								<!-- Temp Table -->
-								<h4><b>11. Una dosis vs. completamente vacunada.</b></h4>
+								<h4><b>10. Una dosis vs. completamente vacunada.</b></h4>
 								<p style=text-align:justify>Se exploró el porcentaje de la población que completó el esquema de vacunación una vez que fueron vacunados con la primera dosis.</p>
 								<pre><code><span style="color: blue">DROP TABLE IF</span> exists #VaccFull
 <span style="color: blue">CREATE TABLE</span> #VaccFull (
@@ -812,7 +782,7 @@ people_fully_vaccinated <span style="color: blue">numeric</span>)
 								entre quienes comenzaron el proceso.</p>
 								<!-- Colombia -->
 								<h2><b>Colombia</b></h2>
-								<h4><b>12. Casos, muertes y vacunas.</b></h4>
+								<h4><b>11. Casos, muertes y vacunas.</b></h4>
 								<p style=text-align:justify>Para finalizar, se exploraron algunos datos sobre el impacto del COVID-19 en Colombia, 
 								incluyendo el número de casos, decesos, la tasa de letalidad del virus y la respuesta de la población a la vacunación.</p>
 								<!-- Colombia Code -->
@@ -892,8 +862,36 @@ vac odp<span style="color: blue"> ON </span>c.location=odp.location</code></pre>
 										<li style=text-align:justify>Se vacunaron 43 millones de personas, lo que significa que el 82.9% de la población recibió al 
 											menos una dosis de la vacuna. Además, el 72.7% completó el esquema completo de vacunación, lo que indica que el 86.5% de la población vacunada logró completar el esquema.</li>
 									</ul></p>
-							<p><a href="https://github.com/alejandro1403/dquest/blob/master/projects/covid/DataExplorationCovid.sql" target="_blank" style="color: rgb(101, 161, 211)">Ver SQL file en GitHub</a></p>
-								<!-- Final -->
+							<h2><b>Visualización</b></h2>
+							<h4><b>12. Visualización COVID-19: casos, muertes y vacunas.</b></h4>
+							<p style=text-align:justify>Con la ayuda de Tableau, se visualizaron los datos de fallecidos por COVID-19.</p>
+								<!-- Muertes totales  y letalidad Dashboard Tableau -->
+								<div class='tableauPlaceholder' id='viz1718399799143' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' 
+									src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;da&#47;dashboardCovid_17183995574840&#47;Dashboard1&#47;1_rss.png' 
+									style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' 
+										value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' />
+										<param name='name' value='dashboardCovid_17183995574840&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' />
+										<param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;da&#47;dashboardCovid_17183995574840&#47;Dashboard1&#47;1.png' /> 
+										<param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' />
+										<param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' />
+									</object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718399799143');              
+									      var vizElement = divElement.getElementsByTagName('object')[0];                  
+										    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) 
+											{ vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='1677px';}       
+											              var scriptElement = document.createElement('script');                   
+														   scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                   
+														    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+								<!-- Final Tableau -->
+							<p style=text-align:justify>El primer gráfico de barras muestra la cantidad de fallecidos por continente,
+							el segundo gráfico de barras muestra la población y el porcentaje de la población vacunada por país. En el mapa, 
+							los países se representaron con diferentes tonalidades de naranja, donde un tono más oscuro indicaba un mayor número de fallecidos. 
+							El número dentro de cada país representa la letalidad histórica del COVID-19 en esa nación.<br>
+							Por último, se presentan dos gráficos. El primero muestra el avance de la cantidad de fallecidos en los países y el segundo, 
+							la cantidad de casos de contagio de COVID-19, ambos a través de los trimestres de los años 2020 a 2024. A la izquierda de estos gráficos se 
+							incluye un filtro que permite mostrar u ocultar la línea de tiempo de un país específico, y también afecta el gráfico de vacunación, 
+							facilitando el análisis detallado de la evolución de los fallecidos, contagios y porcentaje de vacunados por COVID-19 en cada país.</p>
+							<p><a href="https://github.com/alejandro1403/dquest/tree/master/projects/covid" target="_blank" style="color: rgb(101, 161, 211)">Ver carpeta del proyecto en GitHub</a></p>
+							<!-- Final -->
 							<div class="flex-container"> 
 								<ul class="actions" style=" display: flex; justify-content: space-between;">
 									<li><a href="index.html" class="button primary">Atras</a></li>

@@ -159,3 +159,15 @@ vac odp on c.location=odp.location
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
+-- Tabla extra la cual se usara para visualizar en Tableau
+select continent, location, date, population
+, total_cases, total_deaths
+, max(total_deaths) over(partition by location)*100/max(total_cases) over(partition by location) as final_lethality
+, sum(new_deaths) over(partition by continent) as final_death_per_continent
+, total_cases*100/population as case_percentage
+, max(people_vaccinated) over(partition by location) as final_vaccinated
+, max(people_vaccinated) over(partition by location)*100/max(population) over(partition by location) as final_vaccinated_percentage
+from CovidProjectSQL..[owid-covid-data]
+where continent not like ''
+order by 2,3
+
